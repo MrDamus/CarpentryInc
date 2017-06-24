@@ -1,9 +1,9 @@
 module.exports = {
     "extends": "google",
     "parserOptions": {
+        "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true,
-            "modules": true
         }
     },
     "plugins": [
@@ -15,5 +15,17 @@ module.exports = {
         "pragma": "React",  // Pragma to use, default to "React"
         "version": "15.0" // React version, default to the latest React stable release
         }
-    }
+    },
+    rules:{
+        "linebreak-style": 0,
+        "require-jsdoc":
+        [0, {
+            "require": {
+                "FunctionDeclaration": true,
+                "MethodDefinition": false,
+                "ClassDeclaration": false,
+                "ArrowFunctionExpression": false
+            }
+        }]
+    },
 };

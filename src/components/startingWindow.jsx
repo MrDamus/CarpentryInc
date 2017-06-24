@@ -14,14 +14,14 @@ const styles= {
   },
   button: {
     margin: 5,
-  }
+  },
 };
 
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDifficulty: ''
+      selectedDifficulty: '',
     };
     this.handleStart = this.handleStart.bind();
   }
@@ -41,7 +41,7 @@ export default class Navbar extends Component {
             this.setState({selectedDifficulty: title.toUpperCase()})
             }
           }
-        />)
+        />);
   }
 
 render() {
