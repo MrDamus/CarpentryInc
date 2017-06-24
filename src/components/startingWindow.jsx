@@ -1,38 +1,61 @@
 import React, { Component } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
+import TextField from 'material-ui/TextField';
+import {findDOMNode} from 'react-dom';
 
 const styles= {
-   button: {
-      border: '2px solid white',
-      margin: 10,
-      maxWidth: 70,
-      height: 50,
-      flex: 1,
-      display: 'inline-flex',
-      
-   },
-  
+  wrapper: {
+    backgroundColor: 'white',
+    padding: 50,
+  },
+  difficultyWrapper: {
+    margin: 10,
+  },
+  button: {
+    margin: 5,
+  }
 };
 
 export default class Navbar extends Component {
-  navigationButton() {
-    return(
-      <div style={styles.button}>
-        
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedDifficulty: ''
+    };
+  }
+  renderButton(title, color = 'white') {
+    return (
+        <RaisedButton
+          style={styles.button}
+          backgroundColor={color}
+          label={title.toUpperCase()}
+          onMouseDown={(event) => {
+          this.setState({selectedDifficulty: title.toUpperCase()})
+          }
+          }
+        />)
   }
 
 render() {
+  const {selectedDifficulty} = this.state;
     return (
-          <div>
+          <div style={styles.wrapper}>
             <h3>Choose your company name!</h3>
-            <input style={{}} onInput={input => this.setState({title: input.nativeEvent.path[0].value})} />
-            <div>
-                {this.navigationButton()}
-                {this.navigationButton()}
-                {this.navigationButton()}
+             <TextField
+                hintText="CarpentryInc"
+                floatingLabelText="Company name"
+              />
+            <div style={styles.difficultyWrapper}>
+                {selectedDifficulty === ''
+                  ? <h4>Select difficulty level</h4>
+                  : <h4>{`Selected Level: ${selectedDifficulty}`}</h4>
+                }
+                {this.renderButton("easy", green400)}
+                {this.renderButton("normal", yellow400)}
+                {this.renderButton("hard", red400)}
             </div>
-            {this.navigationButton()}
+            {this.renderButton("start", brown400)}
           </div>
       );
     }

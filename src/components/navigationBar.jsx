@@ -34,23 +34,23 @@ const styles= {
 
 
 export default class Navbar extends Component {
-  navigationButton() {
+  navigationButton(title) {
     return(
       <div style={styles.icon}>
-        Icon
+        {title.toUpperCase()}
       </div>
     );
   }
   render() {
     return(
       <div style={styles.wrapper}>
-        {this.navigationButton()}
-        {this.navigationButton()}
+        {this.navigationButton("shop")}
+        {this.navigationButton("profile")}
         <div style={styles.title}>
           <h2>{this.props.title}</h2>
         </div>
-        {this.navigationButton()}
-        {this.navigationButton()}
+        {this.navigationButton("storage")}
+        {this.navigationButton("production")}
       </div>
     )
   } 

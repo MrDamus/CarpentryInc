@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import NavigationBar from './components/navigationBar';
 import StartingWindow from './components/startingWindow';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const styles= {
   contentWrapper: {
@@ -26,12 +27,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" >
-        <NavigationBar title={this.state.title} />
-        <div style={styles.contentWrapper}>
-          <StartingWindow />
+      <MuiThemeProvider>
+        <div className="App" >
+          <NavigationBar title={this.state.title} />
+          <div style={styles.contentWrapper}>
+            <StartingWindow />
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
