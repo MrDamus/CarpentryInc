@@ -5,10 +5,11 @@ import ActionCircle from 'material-ui/svg-icons/action/account-circle';
 import ActionShop from 'material-ui/svg-icons/action/shopping-cart';
 import ActionBuild from 'material-ui/svg-icons/action/build';
 import Store from '../redux/store';
+import {brown700, blueGrey100} from 'material-ui/styles/colors';
 
 const styles= {
   wrapper: {
-    backgroundColor: 'red',
+    backgroundColor: brown700,
     position: 'absolute',
     top: 0,
     left: 0,
@@ -24,7 +25,7 @@ const styles= {
     margin: 10,
     maxWidth: 80,
     height: 80,
-    backgroundColor: 'yellow',
+    backgroundColor: blueGrey100,
     flex: 1,
     display: 'inline-flex',
   },

@@ -6,10 +6,11 @@ import NavigationBar from './components/navigationBar';
 import StartingWindow from './components/startingWindow';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from './redux/store';
+import {blueGrey100} from 'material-ui/styles/colors';
 
 const styles= {
   contentWrapper: {
-    backgroundColor: 'green',
+    backgroundColor: blueGrey100,
     marginTop: 120,
     alignItems: 'center',
     justifyContent: 'center',
