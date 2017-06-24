@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux'
 import logo from './logo.svg';
 import './App.css';
 import NavigationBar from './components/navigationBar';
 import StartingWindow from './components/startingWindow';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import store from './redux/store';
 
 const styles= {
   contentWrapper: {
@@ -27,14 +29,16 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <div className="App" >
-          <NavigationBar title={this.state.title} />
-          <div style={styles.contentWrapper}>
-            <StartingWindow />
+      <Provider store={store}>
+        <MuiThemeProvider>
+          <div className="App" >
+            <NavigationBar />
+            <div style={styles.contentWrapper}>
+              <StartingWindow />
+            </div>
           </div>
-        </div>
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </Provider>
     );
   }
 }

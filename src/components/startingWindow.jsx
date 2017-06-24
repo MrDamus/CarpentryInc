@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
-import {findDOMNode} from 'react-dom';
+import Store from '../redux/store';
 
 const styles= {
   wrapper: {
@@ -17,17 +17,23 @@ const styles= {
   },
 };
 
-export default class Navbar extends Component {
+export default class StartingWindow extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedDifficulty: '',
+      companyName: '',
     };
-    this.handleStart = this.handleStart.bind();
+    this.handleStart = this.handleStart.bind(this);
   }
 
   handleStart() {
-    console.warn("start pressed");
+    Store.dispatch({
+      type: 'START',
+      payload: {
+        difficulty: this.state.selectedDifficulty,
+        companyName: this.state.companyName,
+      }});
   }
 
   renderButton(title, color = 'white', isStart) {
@@ -52,6 +58,7 @@ render() {
              <TextField
                 hintText="CarpentryInc"
                 floatingLabelText="Company name"
+                onChange={(event, text) => this.setState({companyName: text})}
               />
             <div style={styles.difficultyWrapper}>
                 {selectedDifficulty === ''

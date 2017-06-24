@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import { connect } from 'react-redux'
 import ActionHome from 'material-ui/svg-icons/action/home';
 import ActionCircle from 'material-ui/svg-icons/action/account-circle';
 import ActionShop from 'material-ui/svg-icons/action/shopping-cart';
 import ActionBuild from 'material-ui/svg-icons/action/build';
+import Store from '../redux/store';
 
 const styles= {
   wrapper: {
@@ -40,28 +42,44 @@ const styles= {
   }
 }
 
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state= {
+      companyName: props.companyName,
+    };
+  }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({companyName: nextProps.companyName})
+  }
 
-export default class Navbar extends Component {
   navigationButton(element) {
     const Myicon = element;
-    return(
+    return (
       <div style={styles.iconConatiner}>
         {<Myicon style={styles.icon}/>}
       </div>
     );
   }
   render() {
-    return(
+    return (
       <div style={styles.wrapper}>
         {this.navigationButton(ActionHome)}
         {this.navigationButton(ActionCircle)}
         <div style={styles.title}>
-          <h2>{this.props.title}</h2>
+          <h2>{this.state.companyName}</h2>
         </div>
         {this.navigationButton(ActionBuild)}
         {this.navigationButton(ActionShop)}
       </div>
-    )
-  } 
+    );
+  }
 }
+
+function mapStateToProps(state) {
+  return {companyName: state.companyName};
+}
+
+
+export default connect(mapStateToProps)(Navbar);
