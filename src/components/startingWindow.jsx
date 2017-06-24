@@ -23,16 +23,23 @@ export default class Navbar extends Component {
     this.state = {
       selectedDifficulty: ''
     };
+    this.handleStart = this.handleStart.bind();
   }
-  renderButton(title, color = 'white') {
+
+  handleStart() {
+    console.warn("start pressed");
+  }
+
+  renderButton(title, color = 'white', isStart) {
     return (
         <RaisedButton
           style={styles.button}
           backgroundColor={color}
           label={title.toUpperCase()}
           onMouseDown={(event) => {
-          this.setState({selectedDifficulty: title.toUpperCase()})
-          }
+            isStart ? this.handleStart() :
+            this.setState({selectedDifficulty: title.toUpperCase()})
+            }
           }
         />)
   }
@@ -55,7 +62,7 @@ render() {
                 {this.renderButton("normal", yellow400)}
                 {this.renderButton("hard", red400)}
             </div>
-            {this.renderButton("start", brown400)}
+            {this.renderButton("start", brown400, true)}
           </div>
       );
     }
