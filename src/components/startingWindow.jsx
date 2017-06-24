@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {findDOMNode, unmountComponentAtNode} from 'react-dom'
 import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
@@ -34,6 +35,7 @@ export default class StartingWindow extends Component {
         difficulty: this.state.selectedDifficulty,
         companyName: this.state.companyName,
       }});
+      this.props.handleStart();
   }
 
   renderButton(title, color = 'white', isStart) {

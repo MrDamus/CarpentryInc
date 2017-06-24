@@ -16,16 +16,16 @@ const styles= {
     flex: 1,
     height: 700,
     display: 'flex',
-  }
-}
+  },
+};
 
 class App extends Component {
   constructor(props) {
-    super()
+    super();
     this.state= {
-      title: '',
-    }
-  } 
+      startPopupVisoble: true,
+    };
+  }
 
   render() {
     return (
@@ -34,7 +34,10 @@ class App extends Component {
           <div className="App" >
             <NavigationBar />
             <div style={styles.contentWrapper}>
-              <StartingWindow />
+              { this.state.startPopupVisoble ?
+                <StartingWindow handleStart={() => this.setState({startPopupVisoble: false})}/>
+                : null
+              }
             </div>
           </div>
         </MuiThemeProvider>
