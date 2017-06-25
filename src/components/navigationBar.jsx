@@ -6,6 +6,10 @@ import ActionShop from 'material-ui/svg-icons/action/shopping-cart';
 import ActionBuild from 'material-ui/svg-icons/action/build';
 import Store from '../redux/store';
 import {brown700, blueGrey100} from 'material-ui/styles/colors';
+import Workshop from '../pages/workshop';
+import Home from '../pages/home';
+import Shop from '../pages/shop';
+import Profile from '../pages/profile';
 
 const styles= {
   wrapper: {
@@ -55,24 +59,25 @@ class Navbar extends Component {
     this.setState({companyName: nextProps.companyName})
   }
 
-  navigationButton(element) {
+  navigationButton(element, page) {
     const Myicon = element;
     return (
-      <div style={styles.iconConatiner}>
+      <div style={styles.iconConatiner} onMouseDown={() => this.props.onClick(page)}>
         {<Myicon style={styles.icon}/>}
       </div>
     );
   }
+
   render() {
     return (
       <div style={styles.wrapper}>
-        {this.navigationButton(ActionHome)}
-        {this.navigationButton(ActionCircle)}
+        {this.navigationButton(ActionHome, Home)}
+        {this.navigationButton(ActionCircle, Profile)}
         <div style={styles.title}>
           <h2>{this.state.companyName}</h2>
         </div>
-        {this.navigationButton(ActionBuild)}
-        {this.navigationButton(ActionShop)}
+        {this.navigationButton(ActionBuild, Workshop)}
+        {this.navigationButton(ActionShop, Shop)}
       </div>
     );
   }
