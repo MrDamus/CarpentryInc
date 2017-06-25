@@ -5,7 +5,7 @@ import ActionCircle from 'material-ui/svg-icons/action/account-circle';
 import ActionShop from 'material-ui/svg-icons/action/shopping-cart';
 import ActionBuild from 'material-ui/svg-icons/action/build';
 import Store from '../redux/store';
-import {brown700, blueGrey100} from 'material-ui/styles/colors';
+import {brown700, brown500, blueGrey100} from 'material-ui/styles/colors';
 import Workshop from '../pages/workshop';
 import Home from '../pages/home';
 import Shop from '../pages/shop';
@@ -60,10 +60,18 @@ class Navbar extends Component {
   }
 
   navigationButton(element, page) {
+    const {companyName} =this.props;
+    const isEnabled = companyName !== '';
     const Myicon = element;
+    styles.iconConatiner.backgroundColor = blueGrey100;
     return (
-      <div style={styles.iconConatiner} onMouseDown={() => this.props.onClick(page)}>
-        {<Myicon style={styles.icon}/>}
+      <div
+        style={styles.iconConatiner}
+        onMouseDown={() => {
+          isEnabled ? this.props.onClick(page) : null;
+          }}
+        >
+        {<Myicon style={styles.icon} color={brown500}/>}
       </div>
     );
   }
