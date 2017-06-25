@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {green200, yellow200, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
+import GridListExampleSimple from '../components/homeGrid'
 
 const styles= {
   wrapper: {
@@ -22,10 +23,10 @@ export default class Home extends Component {
     super(props);
     this.state = {
         buttons: [{
-            title: 'Home',
+            title: 'Tools',
         },
         {
-            title: 'Bank',
+            title: 'Resources',
         }],
     };
   }
@@ -44,7 +45,9 @@ render() {
     const {buttons} = this.state;
     return (
           <div style={styles.wrapper}>
-            {buttons.map((button) => this.renderButton(button.title))}
+            <h2>WAREHOUSE</h2>
+            <GridListExampleSimple />
+            {buttons.map((button) => this.renderButton(button.title, green200))}
           </div>
       );
     }
