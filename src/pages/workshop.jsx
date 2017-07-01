@@ -25,6 +25,32 @@ export default class Workshop extends Component {
         {
             title: 'table',
         }],
+        furnitures: [{
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+        ],
+        houseComponents: [{
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+        {
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+        {
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+          {
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+        {
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+          {
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+        {
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+        ],
     };
   }
 
@@ -42,8 +68,8 @@ render() {
     const {buttons} = this.state;
     return (
           <div style={styles.wrapper}>
-            <Collapsible title={'Furniture'}/>
-            <Collapsible title={'House Components'}/>
+            <Collapsible title={'Furniture'} gridData={this.state.furnitures}/>
+            <Collapsible title={'House Components'} gridData={this.state.houseComponents}/>
             {buttons.map((button) => this.renderButton(button.title))}
           </div>
       );
