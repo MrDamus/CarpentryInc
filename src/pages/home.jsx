@@ -28,6 +28,11 @@ export default class Home extends Component {
         {
             title: 'Resources',
         }],
+        gridData: [
+        {
+          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
+        },
+      ],
     };
   }
 
@@ -46,7 +51,7 @@ render() {
     return (
           <div style={styles.wrapper}>
             <h2>WAREHOUSE</h2>
-            <GridListExampleSimple />
+            <GridListExampleSimple data={this.state.gridData}/>
             {buttons.map((button) => this.renderButton(button.title, green200))}
           </div>
       );

@@ -4,6 +4,10 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
+const gridSpace = 12;
+const placeholder = {
+          img: 'http://halfbit.com/wp-content/uploads/2014/09/placeholder.png',
+        };
 const styles = {
   root: {
     display: 'flex',
@@ -13,36 +17,35 @@ const styles = {
   gridList: {
     width: 500,
     height: 450,
-    overflowY: 'auto',
+  },
+  image: {
+    width: 100,
+    height: 100,
+    display: 'flex-inline',
+    flex: 1,
+    margin: 5,
+  },
+  gridWrapper: {
+    width: 500,
+    height: 450,
+    flexWrap: 'wrap',
   },
 };
 
-const tilesData = [
-  {
-    img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-];
-const GridListExampleSimple = () => (
+const GridListExampleSimple = ({data}) => {
+  const dataLength = data.length;
+  const placeholderArray = Array(gridSpace-dataLength).fill(placeholder);
+  data = data.concat(placeholderArray);
+  return (
   <div style={styles.root}>
-    <GridList
-      cellHeight={180}
-      style={styles.gridList}
-    >
-      <Subheader>December</Subheader>
-      {tilesData.map((tile) => (
-        <GridTile
-          key={tile.img}
-          title={tile.title}
-          subtitle={<span>by <b>{tile.author}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-        >
-          <img src={tile.img} />
-        </GridTile>
+      <Subheader>Stcok</Subheader>
+    <div style={styles.gridWrapper}>
+      {data.map((element, i) => (
+          <img key={i} style={styles.image} src={element.img} />
       ))}
-    </GridList>
+    </div>
   </div>
 );
+};
 
 export default GridListExampleSimple;
