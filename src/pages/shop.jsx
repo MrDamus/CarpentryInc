@@ -12,6 +12,40 @@ const styles= {
   button: {
     margin: 5,
   },
+  productsGrid: {
+
+  },
+  productWrapper: {
+    display: 'inline-flex',
+    flexDirection: 'Column',
+    border: '1px solid black',
+    alignItems: 'center',
+    margin: 10,
+  },
+  img: {
+    height: 100,
+    width: 100,
+    objectFit: 'fill',
+  },
+  valueSelector: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifContent: 'center',
+  },
+  minus: {
+    marginRight: 5,
+    display: 'block',
+    height: 20,
+    width: 7,
+    backgroundColor: 'brown400',
+  },
+  value: {
+    marginRight: 5,
+    display: 'block',
+    height: 20,
+    width: 7,
+    backgroundColor: 'brown400',
+  },
 };
 
 export default class Shop extends Component {
@@ -37,12 +71,35 @@ export default class Shop extends Component {
         />);
   }
 
+  renderValueSelctor() {
+    return (
+      <div style={styles.valueSelector}>
+        <div style={styles.minus}>- </div>
+        <div style={styles.value}> 0 </div>
+        <div style={styles.plus}> +</div>
+      </div>
+    );
+  }
+
+  renderProduct(source, title, price, stock) {
+    return (
+        <div style={styles.productWrapper}>
+            <img src={source} alt={title} style={styles.img}/>
+            <h4>{title}</h4>
+            <h4>{`Price: ${price}$`}</h4>
+            <h4>{`Available: ${stock}`}</h4>
+            {this.renderValueSelctor()}
+            {this.renderButton('Buy')}
+        </div>);
+  }
+
 render() {
     const {buttons} = this.state;
     return (
-          <div style={styles.wrapper}>
-            {buttons.map((button) => this.renderButton(button.title))}
-          </div>
+      <div style={styles.productsGrid}>
+        {this.renderProduct('http://lesniczowka.blox.pl/resource/4393.JPG','Wooden blocks', 100, 0)}
+        {this.renderProduct('https://sc01.alicdn.com/kf/UT8cE_dXulaXXaFIFrX5/Plank-Wood-Deski-Tarcica.jpeg','Boards', 200, 0)}
+      </div>
       );
     }
   }
