@@ -3,14 +3,12 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
+import Collapsible from '../components/collapsible';
 
 const styles= {
   wrapper: {
     backgroundColor: 'white',
     padding: 50,
-  },
-  difficultyWrapper: {
-    margin: 10,
   },
   button: {
     margin: 5,
@@ -44,6 +42,8 @@ render() {
     const {buttons} = this.state;
     return (
           <div style={styles.wrapper}>
+            <Collapsible title={'Furniture'}/>
+            <Collapsible title={'House Components'}/>
             {buttons.map((button) => this.renderButton(button.title))}
           </div>
       );
