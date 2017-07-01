@@ -1,25 +1,20 @@
 import React from 'react';
-import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-const gridSpace = 12;
-const placeholder = {
-          img: 'http://halfbit.com/wp-content/uploads/2014/09/placeholder.png',
-        };
 const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
   },
   gridList: {
     width: 500,
     height: 450,
   },
   image: {
-    width: 100,
+    maxWidth: 100,
     height: 100,
     display: 'flex-inline',
     flex: 1,
@@ -32,20 +27,14 @@ const styles = {
   },
 };
 
-const GridListExampleSimple = ({data}) => {
-  const dataLength = data.length;
-  const placeholderArray = Array(gridSpace-dataLength).fill(placeholder);
-  data = data.concat(placeholderArray);
+const GridList = ({data}) => {
   return (
   <div style={styles.root}>
-      <Subheader>Stcok</Subheader>
-    <div style={styles.gridWrapper}>
       {data.map((element, i) => (
           <img key={i} style={styles.image} src={element.img} />
       ))}
-    </div>
   </div>
 );
 };
 
-export default GridListExampleSimple;
+export default GridList;

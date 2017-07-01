@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
+import CollapsibleGridList from './collapsibleGridList';
 
 const styles= {
   wrapper: {
@@ -14,7 +15,7 @@ const styles= {
   },
   collapsible: {
     height: 200,
-    width: 100,
+    maxWidth: 350,
     backgroundColor: 'red',
   },
 };
@@ -34,9 +35,7 @@ export default class Collapsible extends Component {
 
 render() {
     const {expanded} = this.state;
-    console.warn(expanded)
     styles.collapsible.display = expanded ? 'flex' : 'none';
-    console.warn(styles.collapsible)
     return (
           <div style={styles.wrapper}>
             <RaisedButton
@@ -45,7 +44,9 @@ render() {
               label={this.props.title.toUpperCase()}
               onMouseDown={this.handleExpandChange}
             />
-            <div style={styles.collapsible} />
+            <div style={styles.collapsible} >
+              <CollapsibleGridList data={this.props.gridData} havePlaceholders={false} />
+            </div>
           </div>
       );
     }
