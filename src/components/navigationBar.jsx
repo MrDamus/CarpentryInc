@@ -38,14 +38,14 @@ const styles= {
     display: 'inline-flex',
     textAlign: 'center',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   icon: {
     margin: 5,
     width: 70,
     height: 70,
-  }
-}
+  },
+};
 
 class Navbar extends Component {
   constructor(props) {

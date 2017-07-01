@@ -20,7 +20,7 @@ class Body extends Component {
   constructor(props) {
     super();
     this.state= {
-      startPopupVisoble: true,
+      startPopupVisible: true,
       selectedPage: null,
     };
   }
@@ -36,8 +36,8 @@ class Body extends Component {
         />
         <div style={styles.contentWrapper}>
             {selectedPage ? <Page /> : null}
-            { this.state.startPopupVisoble ?
-            <StartingWindow handleStart={() => this.setState({startPopupVisoble: false})}/>
+            { this.state.startPopupVisible ?
+            <StartingWindow handleStart={() => this.setState({startPopupVisible: false})}/>
             : null
             }
         </div>
