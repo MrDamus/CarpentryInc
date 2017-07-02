@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
@@ -27,14 +28,29 @@ const styles = {
   },
 };
 
-const GridList = ({data}) => {
+const GridList = ({data, onClick}) => {
   return (
   <div style={styles.root}>
       {data.map((element, i) => (
-          <img key={i} style={styles.image} src={element.img} />
+          <img key={i} style={styles.image} src={element.img} onMouseDown={() => onClick(element.id)}/>
       ))}
   </div>
 );
 };
 
-export default GridList;
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onClick: (id) => {
+      dispatch({
+      type: 'PRODUCTION_ELEMENT_SELECTED',
+      payload: {
+       id,
+      }});
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GridList);

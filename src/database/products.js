@@ -1,18 +1,10 @@
-const initialState = {
-    actions: [{
-        title: 'WOOD',
-        data: [
-        {
-          title: 'Furnitures',
-          data: [{
+export default [
+          {
             id: '0001',
             title: 'Chair',
             img: 'http://piq.codeus.net/static/media/userpics/piq_114455_400x400.png',
-          }],
-        },
-        {
-          title: 'House Components',
-          data: [{
+          },
+          {
             id: '0011',
             title: 'Doors',
             img: 'http://piq.codeus.net/static/media/userpics/piq_95922_400x400.png',
@@ -27,27 +19,9 @@ const initialState = {
             title: 'Floor',
             img: 'http://piq.codeus.net/static/media/userpics/piq_216430_400x400.png',
           },
-          ],
-        },
-        {
-          title: 'Garden',
-          data: [{
+          {
             id: '0021',
             title: 'Table',
             img: 'http://piq.codeus.net/static/media/userpics/piq_253123_400x400.png',
           },
-         ],
-        },
-      ],
-    }]
-}
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case 'START':
-    console.warn(action)
-      const {difficulty, companyName } = action.payload;
-      return { ...state }
-    default:
-      return state
-  }
-}
+    ];

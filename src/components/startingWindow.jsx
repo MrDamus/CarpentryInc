@@ -39,6 +39,7 @@ export default class StartingWindow extends Component {
     } if (!selectedDifficulty) {
       this.setState({selectedDifficultyError: true});
     } else if (!incorrectName) {
+      // TODO: use connect to dispatch
     Store.dispatch({
       type: 'START',
       payload: {

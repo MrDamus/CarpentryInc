@@ -5,6 +5,8 @@ import {green200, yellow200, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
 import GridList from '../components/gridList';
+import productsDatabase from '../database/products';
+import getDbObjects from '../utils/getDbObjects';
 
 const styles= {
   wrapper: {
@@ -30,6 +32,7 @@ class Warehouse extends Component {
             title: 'Resources',
         }],
     };
+    this.productsArray = props.stock;
   }
 
   renderButton(title, color = 'green200') {
@@ -44,10 +47,11 @@ class Warehouse extends Component {
 
 render() {
     const {buttons} = this.state;
+    const data = getDbObjects(productsDatabase, this.productsArray);
     return (
           <div style={styles.wrapper}>
             <h2>WAREHOUSE</h2>
-            <GridList data={this.props.stock}/>
+            <GridList data={data}/>
             {buttons.map((button) => this.renderButton(button.title, green200))}
           </div>
       );
