@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
@@ -48,7 +49,7 @@ const styles= {
   },
 };
 
-export default class Shop extends Component {
+class Shop extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -97,9 +98,16 @@ render() {
     const {buttons} = this.state;
     return (
       <div style={styles.productsGrid}>
-        {this.renderProduct('http://lesniczowka.blox.pl/resource/4393.JPG','Wooden blocks', 100, 0)}
-        {this.renderProduct('https://sc01.alicdn.com/kf/UT8cE_dXulaXXaFIFrX5/Plank-Wood-Deski-Tarcica.jpeg','Boards', 200, 0)}
+        {this.props.shopItems.map((item) => this.renderProduct(item.source, item.title, item.price, item.stock))}
       </div>
       );
     }
   }
+
+function mapStateToProps(state) {
+  return {
+    shopItems: state.shop.items,
+  };
+}
+
+export default connect(mapStateToProps)(Shop);
