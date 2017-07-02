@@ -8,7 +8,8 @@ const styles= {
   contentWrapper: {
     backgroundColor: blueGrey100,
     marginTop: 120,
-    alignItems: 'center',
+    paddingTop: 50,
+    alignItems: 'flex-start',
     justifyContent: 'center',
     flex: 1,
     height: 700,

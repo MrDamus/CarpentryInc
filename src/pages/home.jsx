@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {green200, yellow200, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
-import GridListExampleSimple from '../components/homeGrid'
+import GridList from '../components/gridList';
 
 const styles= {
   wrapper: {
@@ -47,7 +47,7 @@ render() {
     return (
           <div style={styles.wrapper}>
             <h2>WAREHOUSE</h2>
-            <GridListExampleSimple data={this.props.stock}/>
+            <GridList data={this.props.stock}/>
             {buttons.map((button) => this.renderButton(button.title, green200))}
           </div>
       );
