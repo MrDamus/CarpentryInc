@@ -8,15 +8,15 @@ import CollapsibleGridList from './collapsibleGridList';
 const styles= {
   wrapper: {
     backgroundColor: 'white',
-    padding: 50,
+    width: 350,
   },
   button: {
-    margin: 5,
+    margin: 10,
   },
   collapsible: {
-    height: 200,
+    height: '100%',
     maxWidth: 350,
-    backgroundColor: 'red',
+    backgroundColor: brown400,
   },
 };
 
@@ -34,11 +34,12 @@ export default class Collapsible extends Component {
   };
 
 render() {
-    const {expanded} = this.state;
+  const {expanded} = this.state;
     styles.collapsible.display = expanded ? 'flex' : 'none';
     return (
           <div style={styles.wrapper}>
             <RaisedButton
+              fullWidth
               style={styles.button}
               backgroundColor={'white'}
               label={this.props.title.toUpperCase()}
