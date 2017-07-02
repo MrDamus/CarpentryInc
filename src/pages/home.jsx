@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import {green200, yellow200, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
@@ -18,7 +19,7 @@ const styles= {
   },
 };
 
-export default class Home extends Component {
+class Warehouse extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,11 +29,6 @@ export default class Home extends Component {
         {
             title: 'Resources',
         }],
-        gridData: [
-        {
-          img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
-        },
-      ],
     };
   }
 
@@ -51,9 +47,17 @@ render() {
     return (
           <div style={styles.wrapper}>
             <h2>WAREHOUSE</h2>
-            <GridList data={this.state.gridData}/>
+            <GridList data={this.props.stock}/>
             {buttons.map((button) => this.renderButton(button.title, green200))}
           </div>
       );
     }
   }
+
+function mapStateToProps(state) {
+  return {
+    stock: state.warehouse.stock,
+  };
+}
+
+export default connect(mapStateToProps)(Warehouse);

@@ -92,7 +92,7 @@ class Navbar extends Component {
 }
 
 function mapStateToProps(state) {
-  return {companyName: state.companyName};
+  return {companyName: state.profile.companyName};
 }
 
 
