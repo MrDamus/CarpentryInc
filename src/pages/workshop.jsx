@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
@@ -24,7 +25,7 @@ const styles= {
   },
 };
 
-export default class Workshop extends Component {
+class Workshop extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,34 +35,6 @@ export default class Workshop extends Component {
         {
             title: 'show details',
         }],
-        actionsWood: [
-        {
-          title: 'Furnitures',
-          data: [{
-            img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
-          }],
-        },
-        {
-          title: 'House Components',
-          data: [{
-            img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
-          },
-          {
-            img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
-          },
-          {
-            img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
-          },
-          ],
-        },
-        {
-          title: 'Garden',
-          data: [{
-            img: 'http://www.jqueryscript.net/images/jQuery-Plugin-For-Fullscreen-Image-Viewer-Chroma-Gallery.jpg',
-          },
-         ],
-        },
-      ],
     };
   }
 
@@ -90,11 +63,18 @@ render() {
     return (
           <div style={styles.wrapper}>
             <div style={styles.actionsWrapper}>
-              {this.renderActions('Wood', this.state.actionsWood)}
-              {this.renderActions('Metal', this.state.actionsWood)}
+              {this.props.actions.map((action) => this.renderActions(action.title, action.data))}
             </div>
             {buttons.map((button) => this.renderButton(button.title))}
           </div>
       );
     }
   }
+
+function mapStateToProps(state) {
+  return {
+    actions: state.production.actions,
+  };
+}
+
+export default connect(mapStateToProps)(Workshop);
