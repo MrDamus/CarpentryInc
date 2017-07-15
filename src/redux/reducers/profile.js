@@ -43,10 +43,11 @@ const initialState = {
 }
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'START':
-    console.warn(action)
-      const {difficulty, companyName } = action.payload;
-      return { ...state, difficulty, companyName }
+    case 'PRODUCTION_ELEMENT_SELECTED':
+      const { price } = action.payload;
+      const playerProperties = state.playerProperties;
+      playerProperties.money -= price;
+      return { ...state, playerProperties }
     default:
       return state
   }
