@@ -48,6 +48,10 @@ class Warehouse extends Component {
 render() {
     const {buttons} = this.state;
     const data = getDbObjects(productsDatabase, this.productsArray);
+    data.map((element) => {
+      element.quantity = this.props.quantity[element.id];
+      return element;
+    });
     return (
           <div style={styles.wrapper}>
             <h2>WAREHOUSE</h2>
@@ -58,9 +62,10 @@ render() {
     }
   }
 
-function mapStateToProps(state) {
+function mapStateToProps({warehouse}) {
   return {
-    stock: state.warehouse.stock,
+    stock: warehouse.stock,
+    quantity: warehouse.quantity,
   };
 }
 

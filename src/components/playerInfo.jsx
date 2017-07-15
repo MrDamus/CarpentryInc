@@ -15,6 +15,11 @@ const styles= {
 };
 
 class PlayerInfo extends Component {
+
+componentWillReceiveProps(nextProps) {
+  this.forceUpdate();
+}
+
 render() {
     return (
           <div style={styles.wrapper}>
@@ -27,6 +32,7 @@ render() {
 function mapStateToProps({profile}) {
     return {
         playerProperties: profile.playerProperties,
+        money: profile.playerProperties[0].value,
     };
 }
 

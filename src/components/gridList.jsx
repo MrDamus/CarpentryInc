@@ -17,10 +17,17 @@ const styles = {
     width: 500,
     height: 450,
   },
+  imageWrapper: {
+    width: 100,
+    height: 100,
+    display: 'inline-flex',
+    flex: 1,
+    margin: 5,
+    position: 'relative',
+  },
   image: {
     width: 100,
     height: 100,
-    display: 'flex-inline',
     flex: 1,
     margin: 5,
   },
@@ -40,7 +47,10 @@ const GridList = ({data}) => {
       <Subheader>Stcok</Subheader>
     <div style={styles.gridWrapper}>
       {data.map((element, i) => (
+        <div key={i} style={styles.imageWrapper} >
           <img key={i} style={styles.image} src={element.img} />
+          <h4 style={{position: 'absolute', bottom: 0, right: 0}} >{element.quantity}</h4>
+        </div>
       ))}
     </div>
   </div>
