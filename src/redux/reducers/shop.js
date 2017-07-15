@@ -11,8 +11,8 @@ const initialState = {
         stock: 0,
     },
     {
-        source: 'https://sc01.alicdn.com/kf/UT8cE_dXulaXXaFIFrX5/Plank-Wood-Deski-Tarcica.jpeg',
-        title: 'Boards',
+        source: 'http://www.etm.tw/images/sintered_metal_components_for_office_chair/et_matal_05.jpg',
+        title: 'Metal components',
         price: 300,
         stock: 0,
     }]

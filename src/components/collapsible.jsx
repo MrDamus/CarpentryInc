@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
-import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
 import CollapsibleGridList from './collapsibleGridList';
 
@@ -19,7 +18,6 @@ const styles= {
     backgroundColor: brown400,
   },
 };
-
 export default class Collapsible extends Component {
   constructor(props) {
     super(props);
