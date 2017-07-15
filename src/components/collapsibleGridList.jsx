@@ -32,7 +32,7 @@ const GridList = ({data, onClick}) => {
   return (
   <div style={styles.root}>
       {data.map((element, i) => (
-          <img key={i} style={styles.image} src={element.img} onMouseDown={() => onClick(element.id)}/>
+          <img key={i} style={styles.image} src={element.img} onMouseDown={() => onClick(element.id, element.price || 20)}/>
       ))}
   </div>
 );
@@ -44,11 +44,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onClick: (id) => {
+    onClick: (id, price = 20) => {
       dispatch({
       type: 'PRODUCTION_ELEMENT_SELECTED',
       payload: {
        id,
+       price,
       }});
     },
   };

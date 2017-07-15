@@ -8,6 +8,7 @@ const initialState = {
             id: '0001',
             title: 'Chair',
             img: 'http://piq.codeus.net/static/media/userpics/piq_114455_400x400.png',
+            price: 30,
           }],
         },
         {
@@ -16,6 +17,7 @@ const initialState = {
             id: '0011',
             title: 'Doors',
             img: 'http://piq.codeus.net/static/media/userpics/piq_95922_400x400.png',
+            price: 50,
           },
           {
             id: '0012',
@@ -35,6 +37,7 @@ const initialState = {
             id: '0021',
             title: 'Table',
             img: 'http://piq.codeus.net/static/media/userpics/piq_253123_400x400.png',
+            price: 40,
           },
          ],
         },

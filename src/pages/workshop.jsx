@@ -50,10 +50,10 @@ class Workshop extends Component {
 
 renderActions(title, actionsArray) {
   return (
-    <div style={styles.collapsibleWrapper}>
+    <div key={title} style={styles.collapsibleWrapper}>
       <h3>{title}</h3>
-      {actionsArray.map((e) =>
-      <Collapsible title={e.title} gridData={e.data}/>)}
+      {actionsArray.map((e, i) =>
+      <Collapsible key={i} title={e.title} gridData={e.data}/>)}
     </div>
   );
 }
