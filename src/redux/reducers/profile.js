@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
     case 'PRODUCTION_ELEMENT_SELECTED':
       const { price } = action.payload;
       const playerProperties = state.playerProperties;
-      playerProperties[0].value -= price;
+      playerProperties[0].value += price;
       playerProperties[1].value += price/10;
       if(playerProperties[1].value > 50 * playerProperties[2].value)
         playerProperties[2].value += 1;

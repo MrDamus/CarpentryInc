@@ -80,9 +80,9 @@ class Shop extends Component {
   }
 
 render() {
-    const data = getDbObjects(resourceDatabase, this.props.shopItemsIdsArray);
+    const data = getDbObjects(resourceDatabase, this.props.shopItems.map((e) => e.id));
     data.map((element) => {
-      element.stock = 10;
+      element.stock = this.props.shopItems.find(e => e.id === element.id).stock;
       return element;
     });
     return (
@@ -95,7 +95,7 @@ render() {
 
 function mapStateToProps(state) {
   return {
-    shopItemsIdsArray: state.shop.items,
+    shopItems: state.shop.items,
     availableMoney: state.profile.playerProperties[0].value,
   };
 }

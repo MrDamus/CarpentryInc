@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 
 const styles= {
@@ -8,7 +8,7 @@ const styles= {
     width: 100,
     height: 50,
     display: 'flex',
-    justifyContent: 'center', 
+    justifyContent: 'center',
     display: 'inline-flex',
     alignItems: 'center',
   },
@@ -52,12 +52,11 @@ class QuantitySelector extends Component {
 
   onBuy() {
     if (this.props.price * this.state.value > this.props.money) {
-      console.warn("Sorry, you can't afford that!")
+      // TODO: display popup
+      console.warn("Sorry, you can't afford that!");
     } else {
-      this.props.buyResource(this.props.id, this.state.value, this.props.price * this.state.value),
-      console.warn("You bought " + this.state.value +  " " + this.props.title + "!");
+      this.props.buyResource(this.props.id, this.state.value, this.props.price * this.state.value);
     }
-    console.warn('Buy', this.props.money, this.props.price, this.state.value);
   }
 
 render() {
