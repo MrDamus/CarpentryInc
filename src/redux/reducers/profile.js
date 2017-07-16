@@ -18,7 +18,7 @@ const initialState = {
           value: 0,
         },
         ],
-      achievements: [{
+    achievements: [{
           title: 'Money',
           image: 'http://www.freeiconspng.com/uploads/money-icon-29.png',
         },
@@ -26,7 +26,7 @@ const initialState = {
           title: 'Money 2',
           image: 'http://www.freeiconspng.com/uploads/money-icon-29.png',
         }],
-      playerProperties: [
+    playerProperties: [
         {
           label: 'Money',
           value: 1000,

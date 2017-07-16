@@ -99,6 +99,7 @@ render() {
     return (
       <div style={styles.productsGrid}>
         {this.props.shopItems.map((item) => this.renderProduct(item.source, item.title, item.price, item.stock))}
+        
       </div>
       );
     }
@@ -107,6 +108,7 @@ render() {
 function mapStateToProps(state) {
   return {
     shopItems: state.shop.items,
+    availableMoney: state.profile.playerProperties[0].value,
   };
 }
 
