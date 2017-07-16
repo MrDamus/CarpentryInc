@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
+import QuantitySelector from '../components/quantitySelector';
 
 const styles= {
   wrapper: {
@@ -22,10 +23,13 @@ const styles= {
     border: '1px solid black',
     alignItems: 'center',
     margin: 10,
+    width: 140,
+    minHeight: 350,
+    maxHeight: 350,
   },
   img: {
-    height: 100,
-    width: 100,
+    height: 140,
+    width: 140,
     objectFit: 'fill',
   },
   valueSelector: {
@@ -47,6 +51,9 @@ const styles= {
     width: 7,
     backgroundColor: 'brown400',
   },
+  text: {
+    margin: 5,
+  }
 };
 
 class Shop extends Component {
@@ -74,11 +81,7 @@ class Shop extends Component {
 
   renderValueSelctor() {
     return (
-      <div style={styles.valueSelector}>
-        <div style={styles.minus}>- </div>
-        <div style={styles.value}> 0 </div>
-        <div style={styles.plus}> +</div>
-      </div>
+      <QuantitySelector />
     );
   }
 
@@ -86,9 +89,9 @@ class Shop extends Component {
     return (
         <div style={styles.productWrapper}>
             <img src={source} alt={title} style={styles.img}/>
-            <h4>{title}</h4>
-            <h4>{`Price: ${price}$`}</h4>
-            <h4>{`Available: ${stock}`}</h4>
+            <h4 style={[styles.text, {}]} >{title}</h4>
+            <h4 style={styles.text} >{`Price: ${price}$`}</h4>
+            <h4 style={styles.text} >{`Available: ${stock}`}</h4>
             {this.renderValueSelctor()}
             {this.renderButton('Buy')}
         </div>);
