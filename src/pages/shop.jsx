@@ -4,6 +4,9 @@ import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
 import QuantitySelector from '../components/quantitySelector';
+import getDbObjects from '../utils/getDbObjects';
+import resourceDatabase from '../database/resources';
+
 
 const styles= {
   wrapper: {
@@ -77,10 +80,14 @@ class Shop extends Component {
   }
 
 render() {
-    const {buttons} = this.state;
+    const data = getDbObjects(resourceDatabase, this.props.shopItemsIdsArray);
+    data.map((element) => {
+      element.stock = 10;
+      return element;
+    });
     return (
       <div style={styles.productsGrid}>
-        {this.props.shopItems.map(({source, title, price, stock, id}) => this.renderProduct(source, title, price, stock, id))}
+        {data.map(({img, title, price, stock, id}) => this.renderProduct(img, title, price, stock, id))}
       </div>
       );
     }
@@ -88,7 +95,7 @@ render() {
 
 function mapStateToProps(state) {
   return {
-    shopItems: state.shop.items,
+    shopItemsIdsArray: state.shop.items,
     availableMoney: state.profile.playerProperties[0].value,
   };
 }

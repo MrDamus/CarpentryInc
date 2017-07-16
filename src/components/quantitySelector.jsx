@@ -93,5 +93,5 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
-export default connect(() => {}, mapDispatchToProps)(QuantitySelector);
+export default connect(null, mapDispatchToProps)(QuantitySelector);
 

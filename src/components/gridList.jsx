@@ -1,6 +1,5 @@
 import React from 'react';
 import IconButton from 'material-ui/IconButton';
-import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 const gridSpace = 12;
@@ -44,7 +43,6 @@ const GridList = ({data}) => {
   data = data.concat(placeholderArray);
   return (
   <div style={styles.root}>
-      <Subheader>Stcok</Subheader>
     <div style={styles.gridWrapper}>
       {data.map((element, i) => (
         <div key={i} style={styles.imageWrapper} >
