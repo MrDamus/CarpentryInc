@@ -46,6 +46,11 @@ export default (state = initialState, action) => {
     case 'START':
       const {difficulty, companyName } = action.payload;
       return { ...state, difficulty, companyName }
+    case 'BUY_RESOURCE':
+      const { totalPrice } = action.payload;
+      const newPlayerProperties = state.playerProperties;
+      newPlayerProperties[0].value -= totalPrice;
+      return { ...state, playerProperties: newPlayerProperties }
     case 'PRODUCTION_ELEMENT_SELECTED':
       const { price } = action.payload;
       const playerProperties = state.playerProperties;
