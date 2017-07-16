@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import { connect } from 'react-redux';
+
 
 const styles= {
   wrapper: {
@@ -13,6 +16,9 @@ const styles= {
     height: 40,
     width: 40,
   },
+  button: {
+    margin: 5,
+  },
 };
 
 const operations = {
@@ -20,13 +26,14 @@ const operations = {
   decrement: 'DECREMENT',
 };
 
-export default class QuantitySelector extends Component {
+class QuantitySelector extends Component {
   constructor(props) {
     super(props);
     this.state = {
         value: 1,
     };
     this.handlePress = this.handlePress.bind(this);
+    this.onBuy = this.onBuy.bind(this);
   }
 
   handlePress(operation) {
@@ -39,13 +46,23 @@ export default class QuantitySelector extends Component {
     case operations.increment:
       newValue = value + 1;
       break;
-}
-
+    }
     this.setState({value: newValue});
   };
 
+  onBuy() {
+    if (this.props.price * this.state.value > this.props.money) {
+      console.warn("Sorry, you can't afford that!")
+    } else {
+      this.props.buyResource(this.props.id, this.state.value, this.props.price * this.state.value),
+      console.warn("You bought " + this.state.value +  " " + this.props.title + "!");
+    }
+    console.warn('Buy', this.props.money, this.props.price, this.state.value);
+  }
+
 render() {
     return (
+      <div>
         <div style={styles.wrapper}>
           <img style={styles.image} src="http://www.icone-png.com/png/16/16358.png" alt="" onMouseDown={() => this.handlePress(operations.decrement)}/>
             <div>
@@ -53,6 +70,28 @@ render() {
             </div>
           <img style={styles.image} src="http://www.freeiconspng.com/uploads/plus-icon-black-2.png" alt="" onMouseDown={() => this.handlePress(operations.increment)}/>
         </div>
-      );
+        <RaisedButton
+          onMouseDown={() => this.onBuy()}
+          key={'Buy'}
+          style={styles.button}
+          backgroundColor={'white'}
+          label={'Buy'}
+        />
+      </div>
+     );
     }
   }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    buyResource: (id, quantity, totalPrice) => {
+      dispatch({
+      type: 'BUY_RESOURCE',
+      payload: {
+       id, quantity, totalPrice,
+      }});
+    },
+  };
+}
+export default connect(null, mapDispatchToProps)(QuantitySelector);
+

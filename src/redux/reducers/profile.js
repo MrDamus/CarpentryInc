@@ -18,7 +18,7 @@ const initialState = {
           value: 0,
         },
         ],
-      achievements: [{
+    achievements: [{
           title: 'Money',
           image: 'http://www.freeiconspng.com/uploads/money-icon-29.png',
         },
@@ -26,7 +26,7 @@ const initialState = {
           title: 'Money 2',
           image: 'http://www.freeiconspng.com/uploads/money-icon-29.png',
         }],
-      playerProperties: [
+    playerProperties: [
         {
           label: 'Money',
           value: 1000,
@@ -46,6 +46,11 @@ export default (state = initialState, action) => {
     case 'START':
       const {difficulty, companyName } = action.payload;
       return { ...state, difficulty, companyName }
+    case 'BUY_RESOURCE':
+      const { totalPrice } = action.payload;
+      const newPlayerProperties = state.playerProperties;
+      newPlayerProperties[0].value -= totalPrice;
+      return { ...state, playerProperties: newPlayerProperties }
     case 'PRODUCTION_ELEMENT_SELECTED':
       const { price } = action.payload;
       const playerProperties = state.playerProperties;

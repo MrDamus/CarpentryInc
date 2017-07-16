@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
 import {green400, yellow400, red400, brown400} from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import Store from '../redux/store';
 import QuantitySelector from '../components/quantitySelector';
+import getDbObjects from '../utils/getDbObjects';
+import resourceDatabase from '../database/resources';
+
 
 const styles= {
   wrapper: {
     backgroundColor: 'white',
     padding: 50,
-  },
-  button: {
-    margin: 5,
   },
   productsGrid: {
 
@@ -69,39 +68,26 @@ class Shop extends Component {
     };
   }
 
-  renderButton(title, color = 'white') {
-    return (
-        <RaisedButton
-          key={title}
-          style={styles.button}
-          backgroundColor={color}
-          label={title.toUpperCase()}
-        />);
-  }
-
-  renderValueSelctor() {
-    return (
-      <QuantitySelector />
-    );
-  }
-
-  renderProduct(source, title, price, stock) {
+  renderProduct(source, title, price, stock, id) {
     return (
         <div style={styles.productWrapper}>
             <img src={source} alt={title} style={styles.img}/>
             <h4 style={[styles.text, {}]} >{title}</h4>
             <h4 style={styles.text} >{`Price: ${price}$`}</h4>
             <h4 style={styles.text} >{`Available: ${stock}`}</h4>
-            {this.renderValueSelctor()}
-            {this.renderButton('Buy')}
+            <QuantitySelector money={this.props.availableMoney} price={price} title={title} id={id} />
         </div>);
   }
 
 render() {
-    const {buttons} = this.state;
+    const data = getDbObjects(resourceDatabase, this.props.shopItemsIdsArray);
+    data.map((element) => {
+      element.stock = 10;
+      return element;
+    });
     return (
       <div style={styles.productsGrid}>
-        {this.props.shopItems.map((item) => this.renderProduct(item.source, item.title, item.price, item.stock))}
+        {data.map(({img, title, price, stock, id}) => this.renderProduct(img, title, price, stock, id))}
       </div>
       );
     }
@@ -109,7 +95,8 @@ render() {
 
 function mapStateToProps(state) {
   return {
-    shopItems: state.shop.items,
+    shopItemsIdsArray: state.shop.items,
+    availableMoney: state.profile.playerProperties[0].value,
   };
 }
 
