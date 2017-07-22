@@ -9,7 +9,7 @@ const styles= {
   wrapper: {
     backgroundColor: 'white',
     padding: 10,
-    marginTop: 150,
+    marginLeft: 50,
   },
   innerWrapper: {
     display: 'flex',
