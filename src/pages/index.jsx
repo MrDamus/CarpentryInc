@@ -27,6 +27,15 @@ class Body extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch(`http://192.168.0.12:8080/products`)
+    .then(response => response.json())
+      .then((result)=> {
+         console.warn('Result', result);
+      })
+      .catch(e => console.info('Error', e));
+    }
+
   render() {
     const {selectedPage} = this.state;
     const Page = selectedPage;
