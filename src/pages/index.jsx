@@ -4,6 +4,7 @@ import NavigationBar from '../components/navigationBar';
 import StartingWindow from '../components/startingWindow';
 import {blueGrey100} from 'material-ui/styles/colors';
 import PlayerInfo from '../components/playerInfo';
+import ResourcesInfo from '../components/resourcesInfo';
 
 const styles= {
   contentWrapper: {
@@ -37,6 +38,7 @@ class Body extends Component {
           }
         />
         <PlayerInfo />
+        <ResourcesInfo />
         <div style={styles.contentWrapper}>
             {selectedPage ? <Page /> : null}
             { this.state.startPopupVisible ?

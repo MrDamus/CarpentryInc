@@ -3,8 +3,12 @@ const initialState = {
     quantityProducts: {
       '0011': 2,
     },
-    stockResources: [],
-    quantityResources: {},
+    stockResources: ['R001', 'R002', 'R011'],
+    quantityResources: {
+      'R001': 1,
+      'R002': 1,
+      'R011': 1,
+    },
 }
 export default (state = initialState, action) => {
   switch (action.type) {

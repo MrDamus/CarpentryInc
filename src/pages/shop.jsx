@@ -21,10 +21,11 @@ const styles= {
     flexDirection: 'Column',
     border: '1px solid black',
     alignItems: 'center',
-    margin: 10,
     width: 140,
-    minHeight: 350,
-    maxHeight: 350,
+    minHeight: 400,
+    maxHeight: 400,
+    marginTop: 'auto',
+    marginRight: 10,
   },
   img: {
     height: 140,
@@ -51,7 +52,10 @@ const styles= {
     backgroundColor: 'brown400',
   },
   text: {
-    margin: 5,
+    minHeight: 30,
+    maxHeight: 30,
+    laneHeight: 15,
+    margin: 10,
   }
 };
 
@@ -67,12 +71,12 @@ class Shop extends Component {
         }],
     };
   }
-
+  
   renderProduct(source, title, price, stock, id) {
     return (
         <div style={styles.productWrapper}>
             <img src={source} alt={title} style={styles.img}/>
-            <h4 style={[styles.text, {}]} >{title}</h4>
+            <h4 style={styles.text} >{title}</h4>
             <h4 style={styles.text} >{`Price: ${price}$`}</h4>
             <h4 style={styles.text} >{`Available: ${stock}`}</h4>
             <QuantitySelector money={this.props.availableMoney} price={price} title={title} id={id} />
